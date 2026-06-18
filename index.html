@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrijon Subedi</title>
+    <style>
+        /* Base Reset & Design Tokens */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-dark: #090d16;
+            --bg-card: #131c2e;
+            --primary-glow: #38bdf8;
+            --accent-green: #10b981;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --purple-glow: #818cf8;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Top Navigation Bar */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-glow);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Pulse Animation for System Active Indicator */
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s, transform 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-glow);
+        }
+
+        /* Underline Slide Animation */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-glow);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero / Entry Section */
+        section {
+            padding: 6rem 2rem 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #home {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 90vh;
+            gap: 4rem;
+        }
+
+        .hero-text {
+            flex: 1.2;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .hero-img {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        /* Subtle floating image framework */
+        .img-container {
+            position: relative;
+        }
+
+        .hero-img img {
+            width: 300px;
+            height: 300px;
+            border-radius: 24px;
+            object-fit: cover;
+            border: 2px solid rgba(56, 189, 248, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-glow);
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+
+        /* Terminal Window Style Bio */
+        .terminal-bio {
+            background: #05070c;
+            border-left: 3px solid var(--purple-glow);
+            padding: 1.2rem;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            margin: 1.5rem 0;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+        }
+
+        .terminal-line {
+            margin-bottom: 0.3rem;
+        }
+
+        .terminal-line span.cmd {
+            color: var(--primary-glow);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-glow), var(--purple-glow));
+            color: #000;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.25);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        /* Section Global Heading */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 4rem;
+            font-weight: 700;
+        }
+
+        /* Services Cards Grid with dynamic flip-up effects */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.08);
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-glow);
+        }
+
+        /* Technical Skills Section with Grid and Hover Highlights */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        .skills-category {
+            background-color: var(--bg-card);
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .skills-category h4 {
+            color: var(--purple-glow);
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .skill-badge {
+            background-color: rgba(255, 255, 255, 0.04);
+            color: #e2e8f0;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background-color: var(--primary-glow);
+            color: var(--bg-dark);
+            transform: scale(1.05);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+        }
+
+        /* Twin Structure Layout for Projects & Info */
+        .grid-two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+        }
+
+        .timeline-item, .project-card {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #1e293b;
+            transition: border-left-color 0.3s;
+        }
+
+        .project-card:hover, .timeline-item:hover {
+            border-left-color: var(--primary-glow);
+        }
+
+        .project-card h4, .timeline-item h4 {
+            color: #fff;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Form styling */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--bg-card);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.85rem;
+            background-color: var(--bg-dark);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary-glow);
+        }
+
+        .form-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-glow), var(--purple-glow));
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .form-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Responsive Layout Overrides */
+        @media (max-width: 768px) {
+            .grid-two-col { grid-template-columns: 1fr; gap: 2rem; }
+            #home { flex-direction: column-reverse; text-align: center; gap: 2rem; }
+            .nav-links { display: none; } /* Kept simple for standard screen setup */
+            .hero-text h1 { font-size: 2.6rem; }
+        }
+
+        /* Keyframe Entrance Animations */
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Footer & Compliance Policy */
+        footer {
+            background-color: #05070c;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 6rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .privacy-box {
+            max-width: 800px;
+            margin: 1rem auto 0 auto;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: #475569;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="status-dot"></span>
+                Shrijon_Subedi
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#skills">Tech Stack</a></li>
+                <li><a href="#experience-projects">Systems & Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="hero-text">
+            <h1>Hi, I am <span>Shrijon Subedi</span></h1> <br> <br>
+
+            <p style="color:yellowgreen; font-weight: 600; margin-bottom: 0.5rem; font-family: cursive;">
+                LET ME BUILD YOUR DREAM </p> <br>
+            
+            <div class="terminal-bio">
+                <div class="terminal-line"><span class="cmd">shrijon@tu-birendra</span></div>
+                <div class="terminal-line">Loading Student Credentials... OK</div>
+                <div class="terminal-line">Institution: TU Birendra Multiple Campus</div>
+                <div class="terminal-line">Faculty: BICTE (Information Communication Technology Education)</div>
+                <div class="terminal-line">Specialization: IT operations, Core Systems & Software Architecture</div>
+            </div>
+
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">
+                Bridging the gap between technological ecosystems and computing infrastructures through structured code analysis and modern networks.
+            </p>
+            <a href="#contact" class="btn">Establish Connection</a>
+        </div>
+        <div class="hero-img">
+            <div class="img-container">
+                <img src=https://imgs.search.brave.com/SRQJzQaxXiN3TJk1vwHySkCEf8Pxl6cEJcV1VOO1IVk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNTQv/MzQ5LzY4NS9zbWFs/bC9zbWlsaW5nLWJv/eS1pbi1ncmF5LWhv/b2RlZC1qYWNrZXQt/ZnJlZS1waG90by5q/cGc alt="Shrijon Subedi Profile Snapshot">
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2 class="section-title">Operational Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>IT Architecture & Support</h3>
+                <p>Deploying, managing, and maintaining secure structural components, operational nodes, and system integrity pipelines.</p>
+            </div>
+            <div class="service-card">
+                <h3>Full-Stack Programming</h3>
+                <p>Developing server-side scripts and reliable database workflows paired with lightweight responsive views.</p>
+            </div>
+            <div class="service-card">
+                <h3>ICT Strategy & Training</h3>
+                <p>Leveraging deep BICTE instructional frameworks to guide teams through hardware, software, and systems optimization.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Technical Matrix</h2>
+        <div class="skills-container">
+            <div class="skills-category">
+                <h4>Core Languages</h4>
+                <div class="skills-list">
+                    <span class="skill-badge">HTML5</span>
+                    <span class="skill-badge">CSS3</span>
+                    <span class="skill-badge">JavaScript</span>
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">C++</span>
+                    <span class="skill-badge">C#</span>
+                </div>
+            </div>
+            <div class="skills-category">
+                <h4>Frameworks & Architectures</h4>
+                <div class="skills-list">
+                    <span class="skill-badge">React.js</span>
+                    <span class="skill-badge">Django</span>
+                    <span class="skill-badge">Bootstrap</span>
+                    <span class="skill-badge">Tailwind CSS</span>
+                </div>
+            </div>
+            <div class="skills-category">
+                <h4>Databases & Environments</h4>
+                <div class="skills-list">
+                    <span class="skill-badge">MySQL Engine</span>
+                    <span class="skill-badge">SQLite3</span>
+                    <span class="skill-badge">Git & Version Control</span>
+                    <span class="skill-badge">Cloud Deployment</span>
+                </div>
+            </div>
+            <div class="skills-category">
+                <h4>Data Tools & Specialization</h4>
+                <div class="skills-list">
+                    <span class="skill-badge">VS Code Ide</span>
+                    <span class="skill-badge">OOP Architecture</span>
+                    <span class="skill-badge">Network Systems</span>
+                    <span class="skill-badge">Systems Automation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience-projects">
+        <div class="grid-two-col">
+            <div>
+                <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Accomplishments Matrix</h2>
+                <div class="timeline-item">
+                    <h4>BICTE Academic Tenure</h4>
+                    <p style="color: var(--primary-glow); font-size: 0.85rem; margin-bottom: 0.5rem;">TU Birendra Multiple Campus</p>
+                    <p>Acquiring advanced fundamentals in computer programming, operational design, network setups, and instructional systems engineering.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Independent Systems Research</h4>
+                    <p style="color: var(--primary-glow); font-size: 0.85rem; margin-bottom: 0.5rem;">IT Hobbyist Portfolio</p>
+                    <p>Configuring and testing sandbox local environments using Python, managing server scripts, and setting up automated responsive templates.</p>
+                </div>
+            </div>
+            <div>
+                <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Featured Projects</h2>
+                <div class="project-card">
+                    <h4>Automated Resource Registry</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">Django Framework / SQLite</p>
+                    <p>An enterprise-inspired prototype for managing campus equipment inventories, scheduling system checks, and monitoring asset allocation states.</p>
+                </div>
+                <div class="project-card">
+                    <h4>Responsive Command Shell View</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">Vanilla HTML / CSS Animations</p>
+                    <p>A portfolio implementation simulating live terminals, system active behaviors, and highly optimized rendering speeds for quick information access.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <form class="contact-form" action="#" method="POST">
+            <div class="form-group">
+                <label for="name">Operator Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter Full Name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Return Email Node</label>
+                <input type="email" id="email" name="email" placeholder="name@domain.com" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Ping Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Define Inquiry / Objective" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Transmission Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Type your logs or queries here..." required></textarea>
+            </div>
+            <button type="submit" class="form-btn">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Shrijon Subedi. All parameters secure. Operating via BICTE Protocol.</p>
+        <div class="privacy-box">
+            <strong>System Privacy Rights Protocol:</strong> Data inputs supplied via this connection are parsed transiently inside sandboxed DOM structures. No centralized cookies, metadata scraping registers, or tracking scripts are deployed on this station, in accordance with the standard guidelines for secure digital portals.
+        </div>
+    </footer>
+
+</body>
+</html>
