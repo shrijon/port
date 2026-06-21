@@ -278,7 +278,7 @@
         }
 
         .skills-category h4 {
-            color: var(--purple-glow);
+            color: var(--primary-glow);
             margin-bottom: 1.2rem;
             font-size: 1.1rem;
             text-transform: uppercase;
@@ -411,39 +411,110 @@
             background-color: #05070c;
             text-align: center;
             padding: 3rem 2rem;
-            margin-top: 6rem;
+            margin-top: 1rem;
             font-size: 0.9rem;
             color: var(--text-muted);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 0.5px solid rgba(255, 255, 255, 0.05);
         }
 
         .privacy-box {
-            max-width: 800px;
+            max-width: 400px;
             margin: 1rem auto 0 auto;
             font-size: 0.8rem;
-            line-height: 1.5;
+            line-height: 1;
             color: #475569;
             padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-top: 0.5px solid rgba(255, 255, 255, 0.03);
         }
         
 
 
-
-
-        .social-links {
+.social-links {
     display: flex;
     font-size: 42px;
-    gap: 20px;          /* space between icons */
-    justify-content: center; /* center horizontally */
+    gap: 30px;
+    justify-content: center;
     align-items: center;
+}
+
+.social-links a {
+    color: #ffffff;
+    transition: all 0.3s ease;
 }
 
 .social-links a:hover {
     transform: translateY(-10px);
-    background: #130570; /* match your theme color */
+    color: #ffffff;
+    text-shadow:
+        0 0 10px #0000ff,
+        0 0 20px #0000ff,
+        0 0 30px #0000ff,
+        0 0 40px #0000ff;
+} 
+
+
+
+
+.circle-stats{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    flex-wrap:wrap;
+    margin:40px 0;
 }
 
+.circle-card{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:linear-gradient(145deg,#131c2e,#090d16);
+    border:2px solid rgba(56,189,248,0.3);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    transition:0.4s ease;
+    cursor:pointer;
+}
+
+.circle-card h2{
+    color:#38bdf8;
+    font-size:2.5rem;
+    font-weight:700;
+    margin:0;
+}
+
+.circle-card p{
+    color:#f8fafc;
+    font-size:1rem;
+    margin-top:5px;
+}
+
+.circle-card:hover{
+    transform:translateY(-10px) scale(1.05);
+    box-shadow:
+        0 0 15px #38bdf8,
+        0 0 30px #38bdf8,
+        0 0 45px rgba(56,189,248,0.5);
+    border-color:#38bdf8;
+}
+
+@media (max-width:768px){
+    .circle-card{
+        width:140px;
+        height:140px;
+    }
+
+    .circle-card h2{
+        font-size:2rem;
+    }
+
+    .circle-card p{
+        font-size:0.85rem;
+    }
+}
 
 
 
@@ -476,10 +547,10 @@
     And I'm a <span id="typing-text"></span></h3>
 
 
-
+                    
 
               <script>  const roles = [
-    { text: "Web Developer ", color: "#38bdf8" },   // blue
+    { text: "Web Developer ", color: "#10b981" },   // blue
     { text: "Frontend Developer ", color: "#10b981" } // green
 ];
 
@@ -521,7 +592,7 @@ typeEffect();
 
 
 
-            <p style="color:yellowgreen; font-weight: 600; margin-bottom: 0.5rem; font-family: cursive;">
+            <p style="color:rgb(47, 175, 245); font-weight: 600; margin-bottom: 0.5rem; font-family: cursive;">
                 LET ME BUILD YOUR DREAM </p> <br>
             
             <div class="terminal-bio">
@@ -541,6 +612,29 @@ typeEffect();
         </div>
     </section>
 
+
+
+
+<div class="circle-stats">
+    <div class="circle-card">
+        <h2>100+</h2>
+        <p>Projects</p>
+    </div>
+
+    <div class="circle-card">
+        <h2>4+</h2>
+        <p>Years Experience</p>
+    </div>
+
+    <div class="circle-card">
+        <h2>20+</h2>
+        <p>Clients</p>
+    </div>
+</div>
+
+
+
+
     <section id="services">
         <h2 class="section-title">Operational Services</h2>
         <div class="services-grid">
@@ -556,22 +650,41 @@ typeEffect();
                 <h3>ICT Strategy & Training</h3>
                 <p>Leveraging deep BICTE instructional frameworks to guide teams through hardware, software, and systems optimization.</p>
             </div>
+            <div class="service-card">
+                <h3>Graphics Designs</h3>
+                <p>Our creative solutions help businesses strengthen their brands identity, engage audiences, and communicate their message effectively.</p>
+            </div>
+             <div class="service-card">
+                <h3>Hosting</h3>
+                <p>Providing reliable and scalable hosting solutions to ensure your website or application is always accessible and performing at its best.</p>
+            </div>
+             <div class="service-card">
+                <h3>Marketing</h3>
+                <p>Driving brand awareness and customer engagement through strategic marketing initiatives and data-driven approaches.</p>
+            </div>
         </div>
     </section>
 
     <section id="skills">
-        <h2 class="section-title">Technical Matrix</h2>
+        <h2 class="section-title">Core Technologies We Use</h2>
         <div class="skills-container">
             <div class="skills-category">
                 <h4>Core Languages</h4>
                 <div class="skills-list">
                     <span class="skill-badge">HTML5</span>
-                    <span class="skill-badge">CSS3</span>
+                    <span class="skill-badge">CSS</span>
                     <span class="skill-badge">JavaScript</span>
                     <span class="skill-badge">Python</span>
                     <span class="skill-badge">C++</span>
                     <span class="skill-badge">C#</span>
-                </div>
+                    <span class="skill-badge">Java</span>
+                    <span class="skill-badge">Rust</span>
+                    <span class="skill-badge">PHP</span>
+                    <span class="skill-badge">SQL</span> 
+                    <span class="skill-badge">Kotlin</span>
+                    <span class="skill-badge">Swift</span>
+
+                           </div>
             </div>
             <div class="skills-category">
                 <h4>Frameworks & Architectures</h4>
@@ -580,6 +693,10 @@ typeEffect();
                     <span class="skill-badge">Django</span>
                     <span class="skill-badge">Bootstrap</span>
                     <span class="skill-badge">Tailwind CSS</span>
+                    <span class="skill-badge">Node.js</span>
+                    <span class="skill-badge">Angular</span>
+                    <span class="skill-badge">Vue.js</span>
+                    <span class="skill-badge">Spring Boot</span>
                 </div>
             </div>
             <div class="skills-category">
@@ -589,6 +706,9 @@ typeEffect();
                     <span class="skill-badge">SQLite3</span>
                     <span class="skill-badge">Git & Version Control</span>
                     <span class="skill-badge">Cloud Deployment</span>
+                    <span class="skill-badge">Linux</span>
+                    <span class="skill-badge">Windows</span>
+                    <span class="skill-badge">Netlify</span>
                 </div>
             </div>
             <div class="skills-category">
@@ -597,7 +717,9 @@ typeEffect();
                     <span class="skill-badge">VS Code Ide</span>
                     <span class="skill-badge">OOP Architecture</span>
                     <span class="skill-badge">Network Systems</span>
-                    <span class="skill-badge">Systems Automation</span>
+                    <span class="skill-badge">DevOps</span>
+                    <span class="skill-badge">DBMS</span>
+                    
                 </div>
             </div>
         </div>
@@ -606,32 +728,36 @@ typeEffect();
     <section id="experience-projects">
         <div class="grid-two-col">
             <div>
-                <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Accomplishments Matrix</h2>
+                <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Ongoing Projects</h2>
                 <div class="timeline-item">
-                    <h4>BICTE Academic Tenure</h4>
-                    <p style="color: var(--primary-glow); font-size: 0.85rem; margin-bottom: 0.5rem;">TU Birendra Multiple Campus</p>
-                    <p>Acquiring advanced fundamentals in computer programming, operational design, network setups, and instructional systems engineering.</p>
+                    <h4>CRM Management System</h4>
+                    <p style="color: var(--primary-glow); font-size: 0.85rem; margin-bottom: 0.5rem;">Everonix Tech</p>
+                    <p>Everonix Tech's CRM Management System is designed to provide a scalable, secure, and user-friendly platform that helps businesses build stronger customer relationships while driving sustainable growth and operational excellence.</p>
                 </div>
                 <div class="timeline-item">
-                    <h4>Independent Systems Research</h4>
-                    <p style="color: var(--primary-glow); font-size: 0.85rem; margin-bottom: 0.5rem;">IT Hobbyist Portfolio</p>
-                    <p>Configuring and testing sandbox local environments using Python, managing server scripts, and setting up automated responsive templates.</p>
+                    <h4>System Integration and API Development</h4>
+                    <p style="color: var(--primary-glow); font-size: 0.85rem; margin-bottom: 0.5rem;">PY Tech</p>
+                    <p>PY Tech is committed to helping businesses embrace digital transformation by delivering reliable, innovative, and customized technology solutions that promote systematic management, operational excellence, and long-term growth.</p>
                 </div>
             </div>
             <div>
                 <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Featured Projects</h2>
                 <div class="project-card">
-                    <h4>Automated Resource Registry</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">Django Framework / SQLite</p>
-                    <p>An enterprise-inspired prototype for managing campus equipment inventories, scheduling system checks, and monitoring asset allocation states.</p>
+                    <h4>Nippon Educational Center</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">Website Management</p>
+                    <p>An enterprise-inspired prototype for managing consultancy resource inventories, tracking student asset allocations, and scheduling routine system maintenance checks for Nippon Educational Center.</p>
                 </div>
                 <div class="project-card">
-                    <h4>Responsive Command Shell View</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">Vanilla HTML / CSS Animations</p>
-                    <p>A portfolio implementation simulating live terminals, system active behaviors, and highly optimized rendering speeds for quick information access.</p>
+                    <h4>YaarChat</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">Community-Based Social Media Platform</p>
+                    <p>YaarChat – all-in-one social platform. Explore games, movies, forums, jobs, events, marketplace, funding & more. Connect and grow — free.</p>
                 </div>
             </div>
         </div>
+        
+
+
+
     </section>
 
     <section id="contact">
@@ -681,8 +807,6 @@ typeEffect();
         </section>
 
     </section>
-
-
 
     <footer>
         <p>&copy; 2026 Shrijon Subedi. All Rights Reserved.</p>
